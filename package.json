@@ -1,0 +1,39 @@
+{
+  "name": "heroku-addon-auth",
+  "version": "0.0.1",
+  "description": "Middleware for [restify](https://github.com/mcavage/node-restify) to check authentication as per the Heroku Addon specs: basic authentication with username and password stored in `addon-manifest.json`",
+  "main": "heroku-addon-auth.js",
+  "scripts": {
+    "prepublish": "verb; coffee  -o ./ --compile src/*.litcoffee",
+    "test": "mocha --compilers coffee:coffee-script/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndreasPizsa/heroku-addon-auth.git"
+  },
+  "keywords": [
+    "heroku",
+    "authentication",
+    "auth",
+    "addon",
+    "http",
+    "restify",
+    "express"
+  ],
+  "author": {
+    "name": "Andreas Pizsa",
+    "url": "http://github.com/AndreasPizsa"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndreasPizsa/heroku-addon-auth/issues"
+  },
+  "homepage": "https://github.com/AndreasPizsa/heroku-addon-auth",
+  "dependencies": {},
+  "devDependencies": {
+    "verb": "^0.2.15",
+    "mocha": "^1.21.4",
+    "coffee-script": "^1.8.0",
+    "restify": "^2.8.2"
+  }
+}
