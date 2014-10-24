@@ -29,8 +29,14 @@ server.use(require('heroku-addon-auth')(options));
 Note that the **Authorization Parser** needs to be installed **before** `heroku-addon-auth`.
 
 
-### Compatibility with Express
-restify uses the same Middleware function pattern as expresss, `function middleware(req,res,next)`, which should make it very easily portable to Express and similar servers.
+### Compatibility with Express and Connect
+restify uses the same Middleware function pattern as Expresss/Connect:
+
+>```coffee-script
+function middleware(req,res,next)`
+```
+
+ which should make it very easily portable to Express and similar servers.
 
 One `restify`-specific requirement is that the _Authorization Parser_ must be used before calling this module.
 
@@ -49,7 +55,7 @@ One `restify`-specific requirement is that the _Authorization Parser_ must be us
 #### log
 `log` is supposed to be a `bunyan` instance or any other log that can print hashes.
 
-      if not log then log = console
+      log ?= console
 
 #### manifest
 Specify a custom manifest; defaults to the  `addon-manifest.json` from the packages main module.
@@ -65,14 +71,14 @@ Specify a custom manifest; defaults to the  `addon-manifest.json` from the packa
 ## Authenticating
 
       return (req,res,next)->
+        reqLog = req.log ? log
         if not req.authorization
           path = require 'path'
           errorMessage =
-            "Authorization middleware must be
-            use()d before
+            "Authorization middleware must be use()d before
             #{path.basename(module.filename,'.litcoffee')},
             e.g. server.use(restify.authorizationParser())."
-          console.log errorMessage
+          reqLog errorMessage
           return next new restify.errors.InternalError errorMessage
 
         auth = req.authorization?.basic
