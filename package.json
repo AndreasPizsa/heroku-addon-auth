@@ -1,6 +1,6 @@
 {
   "name": "heroku-addon-auth",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Middleware for restify to check authentication as per the Heroku Addon specs: basic authentication with username and password stored in `addon-manifest.json`",
   "main": "heroku-addon-auth.js",
   "scripts": {
@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/AndreasPizsa/heroku-addon-auth",
   "dependencies": {},
+  "peerDependencies": {
+    "restify": "^2.8.2"
+  },
   "devDependencies": {
     "verb": "^0.2.15",
     "mocha": "^1.21.4",
