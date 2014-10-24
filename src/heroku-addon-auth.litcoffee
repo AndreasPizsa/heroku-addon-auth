@@ -78,7 +78,7 @@ Specify a custom manifest; defaults to the  `addon-manifest.json` from the packa
             "Authorization middleware must be use()d before
             #{path.basename(module.filename,'.litcoffee')},
             e.g. server.use(restify.authorizationParser())."
-          reqLog errorMessage
+          reqLog.error errorMessage
           return next new restify.errors.InternalError errorMessage
 
         auth = req.authorization?.basic

@@ -3,7 +3,7 @@
   module.exports = function(options) {
     var log, manifest, manifestName, path, restify;
     log = options.log, manifest = options.manifest;
-    if (!log) {
+    if (log == null) {
       log = console;
     }
     if (!manifest) {
@@ -13,14 +13,15 @@
     }
     restify = require('restify');
     return function(req, res, next) {
-      var auth, errorMessage, _ref;
+      var auth, errorMessage, reqLog, _ref, _ref1;
+      reqLog = (_ref = req.log) != null ? _ref : log;
       if (!req.authorization) {
         path = require('path');
         errorMessage = "Authorization middleware must be use()d before " + (path.basename(module.filename, '.litcoffee')) + ", e.g. server.use(restify.authorizationParser()).";
-        console.log(errorMessage);
+        reqLog.error(errorMessage);
         return next(new restify.errors.InternalError(errorMessage));
       }
-      auth = (_ref = req.authorization) != null ? _ref.basic : void 0;
+      auth = (_ref1 = req.authorization) != null ? _ref1.basic : void 0;
       if (!auth || auth.username !== manifest.id || auth.password !== manifest.api.password) {
         return next(new restify.errors.UnauthorizedError);
       }
