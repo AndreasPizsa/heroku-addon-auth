@@ -8,7 +8,7 @@ randomstring = ()->
 
 describe 'heroku-addon-auth',->
   describe 'setup',->
-    auth = require '../heroku-addon-auth'
+    auth = require '../'
 
     it 'will fail in testing when trying to load root addon-manifest.json',->
       assert.throws ()->
@@ -28,7 +28,7 @@ describe 'heroku-addon-auth',->
       api:
         password: randomstring()
 
-    auth = (require '../heroku-addon-auth')
+    auth = (require '../')
       manifest:manifest
 
     it 'will fail when started without Authorization Parser being installed',(done)->

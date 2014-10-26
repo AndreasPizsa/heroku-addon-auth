@@ -64,7 +64,9 @@ Specify a custom manifest; defaults to the  `addon-manifest.json` from the packa
         path = require 'path'
         manifestName = path.dirname(require.main.filename) +
           path.sep + 'addon-manifest.json'
+        log.info {filename:manifestName}, "Loading manifest file"
         manifest = require manifestName
+        log.info {filename:manifestName,mainfest:manifest}, "Loading manifest file successful."
 
       restify = require 'restify'
 
@@ -86,6 +88,7 @@ Specify a custom manifest; defaults to the  `addon-manifest.json` from the packa
         if not auth or
         auth.username != manifest.id or
         auth.password != manifest.api.password
+          reqLog.error {auth:auth, manifest:{id:manifest.id,apiPassword:manifest.api.password}}, "Authentication failed"
           return next new restify.errors.UnauthorizedError
 
         return next()

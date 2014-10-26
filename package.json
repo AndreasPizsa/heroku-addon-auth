@@ -1,10 +1,10 @@
 {
   "name": "heroku-addon-auth",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Middleware for restify to check authentication as per the Heroku Addon specs: basic authentication with username and password stored in `addon-manifest.json`",
-  "main": "heroku-addon-auth.js",
+  "main": "dist/heroku-addon-auth.js",
   "scripts": {
-    "prepublish": "verb; coffee  -o ./ --compile src/*.litcoffee",
+    "build": "verb; coffee  -o ./dist/ --compile src/*.litcoffee; npm test",
     "test": "mocha --compilers coffee:coffee-script/register"
   },
   "repository": {

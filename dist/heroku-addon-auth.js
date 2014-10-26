@@ -9,7 +9,14 @@
     if (!manifest) {
       path = require('path');
       manifestName = path.dirname(require.main.filename) + path.sep + 'addon-manifest.json';
+      log.info({
+        filename: manifestName
+      }, "Loading manifest file");
       manifest = require(manifestName);
+      log.info({
+        filename: manifestName,
+        mainfest: manifest
+      }, "Loading manifest file successful.");
     }
     restify = require('restify');
     return function(req, res, next) {
@@ -23,6 +30,13 @@
       }
       auth = (_ref1 = req.authorization) != null ? _ref1.basic : void 0;
       if (!auth || auth.username !== manifest.id || auth.password !== manifest.api.password) {
+        reqLog.error({
+          auth: auth,
+          manifest: {
+            id: manifest.id,
+            apiPassword: manifest.api.password
+          }
+        }, "Authentication failed");
         return next(new restify.errors.UnauthorizedError);
       }
       return next();
