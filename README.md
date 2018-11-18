@@ -1,5 +1,5 @@
 # heroku-addon-auth [![NPM version](https://badge.fury.io/js/heroku-addon-auth.svg)](http://badge.fury.io/js/heroku-addon-auth)
-  [![Build Status](https://travis-ci.org/AndreasPizsa/heroku-addon-auth.svg)](https://travis-ci.org/AndreasPizsa/heroku-addon-auth) 
+  [![Build Status](https://travis-ci.org/AndreasPizsa/heroku-addon-auth.svg)](https://travis-ci.org/AndreasPizsa/heroku-addon-auth) [![Greenkeeper badge](https://badges.greenkeeper.io/AndreasPizsa/heroku-addon-auth.svg)](https://greenkeeper.io/) 
 
 
 > Middleware for [restify](https://github.com/mcavage/node-restify) to check authentication as per the Heroku Addon specs: basic authentication with username and password stored in `addon-manifest.json`
