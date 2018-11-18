@@ -34,9 +34,9 @@
     "restify": "^2.8.2"
   },
   "devDependencies": {
-    "verb": "^0.2.15",
-    "mocha": "^1.21.4",
+    "verb": "^0.8.10",
+    "mocha": "^5.2.0",
     "coffee-script": "^1.8.0",
-    "restify": "^2.8.2"
+    "restify": "^7.2.3"
   }
 }
